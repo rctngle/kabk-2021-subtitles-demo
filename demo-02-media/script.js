@@ -1,19 +1,19 @@
-// 1. Get the video element from the DOM
+// 1. Get the audio element from the DOM
 
-const video = document.querySelector('video');
+const audio = document.querySelector('video');
 
-// 2. When you click the anywhere on the page, play the video	
+// 2. When you click the anywhere on the page, play the audio	
 
 document.body.addEventListener('click', () => {
-	video.play();
+	audio.play();
 })
 
-// 3. When the video starts playing, set up some function to handle 'onenter' and 'onexit' events
+// 3. When the audio starts playing, set up some function to handle 'onenter' and 'onexit' events
 
-video.addEventListener('play', () => {
+audio.addEventListener('play', () => {
 
 	// get the track, there can be multiple but we're only using one, so just get the first one
-	const tracks = video.textTracks[0];
+	const tracks = audio.textTracks[0];
 
 	// each individual subtitle/statement/sentence is called a 'cue'
 	const cues = tracks.cues;
