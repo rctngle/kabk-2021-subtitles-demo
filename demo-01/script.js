@@ -13,10 +13,10 @@ document.body.addEventListener('click', () => {
 video.addEventListener('play', () => {
 
 	// get the track, there can be multiple but we're only using one, so just get the first one
-	var tracks = video.textTracks[0];
+	const tracks = video.textTracks[0];
 
 	// each individual subtitle/statement/sentence is called a 'cue'
-	var cues = tracks.cues;
+	const cues = tracks.cues;
 
 	for (const [index, cue] of Object.entries(cues)) {
 		if(typeof(cue) === 'object'){

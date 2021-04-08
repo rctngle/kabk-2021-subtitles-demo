@@ -1,0 +1,39 @@
+body, html {
+	height: 100%;
+}
+body {
+	background-color: #000;
+	color: #999;
+	min-height: 100vh;
+	width: 100%;
+	margin: 0;
+	font-family: sans-serif;
+}
+
+#subtitle-container {
+	font-size: 1.1vw;
+	text-align: center;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	flex-flow: column nowrap;
+
+}
+
+#subtitle-container div {
+	position: absolute;
+	text-align: center;
+	width: 20vw;
+	transition: all 500ms;
+	transform: scale(1);	
+	text-shadow: 0 0 10px #000;
+	background-color: rgba(0,0,0,0.3);
+}
+
+
+#subtitle-container div.focus {
+	color: yellow;
+	transform: scale(5);
+	z-index: 1;
+}
