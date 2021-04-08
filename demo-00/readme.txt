@@ -15,11 +15,7 @@
 	- Upload the video
 	- Click Next, Next, Next
 	- Edit the video
-
-
 	- Choose Subtitles from the left menu
-	- Choose Language
-	- Click Add
-	- Click AutoSync
-	- Click Publish
-	- In the Subtitles column it will say 'Generating Timings', refresh the page every few minutes until it completes
+	- Refresh occasionally, after 10 or 15 minutues you'll see an entry - English (Automatic) 
+	- Click the 3-dots, then download, then .VTT
+	- Move captions.vtt to your project folder
