@@ -1,21 +1,13 @@
-// 1. Get the audio element from the DOM
-
 const audio = document.querySelector('video');
-
-// 2. When you click the anywhere on the page, play the audio	
 
 document.body.addEventListener('click', () => {
 	audio.play();
 })
 
-// 3. When the audio starts playing, set up some function to handle 'onenter' and 'onexit' events
-
 audio.addEventListener('play', () => {
 
-	// get the track, there can be multiple but we're only using one, so just get the first one
 	const tracks = audio.textTracks[0];
 
-	// each individual subtitle/statement/sentence is called a 'cue'
 	const cues = tracks.cues;
 
 	for (const [index, cue] of Object.entries(cues)) {
@@ -26,37 +18,38 @@ audio.addEventListener('play', () => {
 	}
 });
 
-// 4.
 // this function will be called when each subtitle starts
-// you can access the text of the current subtitle in `this.text`
+// this time we'll search the text for instances of [[some-element-id]] 
+// some-element-id refers to an element in the DOM, like <div id="some-element-id"></div>
+// that element will be shown when its id is found in the subtitle
 
 function cueEnter(){
 
 	let subtitleText = this.text;
 	
-	// 4a. Check if the subtitle text contains double brackets
+	// Check if the subtitle text contains double brackets
 
-	if(subtitleText.includes('[[')){
+	if(subtitleText.includes('[[')) {
 
 
-		// 4b. Get the media id that we want to switch on
+		// Use a 'Regular Expression' to check if the subtitle contains a text like [[some-element-id]]
+
 		const matches = this.text.match(/\[\[(.*)\]\]/);
+		
 		if(matches[1]){
 
-			// 4c. Show the media element with the matched ID
+			// if the element exists, show it the element
+			
 			document.querySelector('#'+matches[1]).style.display = 'block';
+ 
+			// and remove the [[some-element-id]] from the subtitle text
 
-			// 4d. remove the media element text from the subtitle
 			subtitleText = subtitleText.replace(matches[0], '');
 		}
 		
 	}
 	document.querySelector('#subtitle-container').innerText = subtitleText;
 }
-
-// 5.
-// this function will be called when each subtitle ends
-// so these two functions will be called repeatedly, for each subtitle in your track.
 
 function cueExit(){
 	document.querySelector('#subtitle-container').innerText = '';

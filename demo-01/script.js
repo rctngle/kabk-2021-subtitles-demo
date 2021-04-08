@@ -13,11 +13,16 @@ document.body.addEventListener('click', () => {
 audio.addEventListener('play', () => {
 
 	// get the track, there can be multiple but we're only using one, so just get the first one
+
 	const tracks = audio.textTracks[0];
 
 	// each individual subtitle/statement/sentence is called a 'cue'
+
 	const cues = tracks.cues;
 
+
+	// assign functions to be called onenter and onexit, see comments 4 and 5 below
+	
 	for (const [index, cue] of Object.entries(cues)) {
 		if(typeof(cue) === 'object'){
 			cue.onenter = cueEnter;
